@@ -12,10 +12,13 @@ if __name__ == "__main__":
     parser.add_argument(
         '--command', help="Command for the given cell. Could be 'red_flag', 'delete_flag', 'question_mark' or 'uncover'"
     )
+    parser.add_argument(
+        '--url', help='Optional arg if you want to use a custom API url'
+    )
 
     args = parser.parse_args()
 
-    response = MinesweeperApi().update(args.id, {
+    response = MinesweeperApi(args.url).update(args.id, {
         "x": args.x,
         "y": args.y,
         "command": args.command,
